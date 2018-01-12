@@ -1,0 +1,6 @@
+<app-navbar></app-navbar>
+<main style="height: 100%; width: 100%;" class="app-container">
+  <router-outlet (activate)="onActivate($event, outlet)" #outlet></router-outlet>
+  <!--<toaster-container [toasterconfig]="toasterconfig"></toaster-container> Does not support Angular version 5 - find some alternative for toaster-->
+</main>
+<my-store-devtools *ngIf="showMonitor"></my-store-devtools>

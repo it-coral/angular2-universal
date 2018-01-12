@@ -1,0 +1,55 @@
+@import '../../../assets/css/scss/app.variables.scss';
+@import '../../../assets/css/scss/md.variables.scss';
+@import '../../../assets/css/scss/material-dashboard/mixins/_vendor-prefixes.scss';
+
+.search-input-text {
+  width: 40%;
+}
+
+.search-input-sport {
+  width: 40%;
+}
+
+div.centre-h
+{
+  //background-color: plum;
+  display: block;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 1400px) {
+  div.centre-h {
+    data-screen-type: "desktop";
+}
+}
+@media screen and (max-width: 700px) {
+  div.centre-h {
+    data-screen-type: "tablet";
+  }
+}
+@media screen and (max-width:300px) {
+  div.centre-h {
+    data-screen-type: "phone";
+  }
+
+  .search-box {
+      height: 325px;
+  }
+}
+
+@media screen and (max-width:700px, 300px) {
+  #image-row {
+    min-height: 500px;
+    max-height: 500px;
+  }
+}
+
+div.centre-v
+{
+  //background-color: yellow;
+  display: block;
+  text-align: left;
+  @include vertical-align();
+}

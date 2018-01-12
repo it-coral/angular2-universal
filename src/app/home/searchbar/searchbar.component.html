@@ -1,0 +1,18 @@
+<input type="text"
+       class="form-control m-b-xs"
+       name="searchLocation"
+       [(ngModel)]="searchLocation"
+       placeholder="City or location"
+       (keyup.enter)="searchEnterKey()">
+<select class="form-control m-b-xs" name="sport" [(ngModel)]="sportId" (keyup.enter)="searchEnterKey()">
+  <option value="null">All race types</option>
+  <option *ngFor="let sport of sports" [value]="sport.id">{{sport.name}}</option>
+</select>
+<button class="btn btn-primary btn-block"
+        type="button"
+        (click)="searchClick()">
+  <i class="fa fa-search"></i>
+  <span *hideItBootstrap="['xs']">
+    Find races
+  </span>
+</button>

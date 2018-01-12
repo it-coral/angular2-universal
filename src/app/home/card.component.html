@@ -1,0 +1,15 @@
+<div class="item">
+  <div class="pos-rlt">
+    <a [href]="url" (click)="handleClick()">
+      <div class="card">
+        <ng-content class="card-media"></ng-content>
+        <div class="card-overlay">
+          <h1 class="card-overlay-title text-center" [innerHTML]="title"></h1>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="padder-v">
+  </div>
+</div>
+

@@ -1,0 +1,62 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.9.4
+    steps:
+      - checkout
+      - setup_remote_docker
+      - restore_cache:
+          keys:
+          - yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          - yarn-cache-{{ .Branch }}-
+          - yarn-cache-
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - save_cache:
+          key: yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+  docker:
+    docker:
+      - image: docker:17.05.0-ce-git
+    environment:
+        IMAGE_NAME: jhuntoo/mr-frontend-universal
+    steps:
+      - checkout
+      - git clone git@github.com:MustRace/mr-deployment_scripts.git scripts --depth 1
+      - setup_remote_docker
+      - restore_cache:
+          keys:
+            - docker-cache-{{ .Branch }}-{{ checksum "Dockerfile" }}
+            - docker-cache-{{ .Branch }}-
+            - docker-cache-
+          paths:
+            - /caches/app.tar
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /caches/app.tar | true
+      - run:
+          name: Docker build
+          command: |
+            - ./scripts/docker_build.sh `pwd` $IMAGE_NAME $CIRCLE_BUILD_NUM $CIRCLE_BRANCH "--build-arg CIRCLE_BUILD_NUM=${CIRCLE_BUILD_NUM} --build-arg GIT_SHA=`git rev-parse HEAD`"
+      - run:
+          name: Save Docker image layer cache
+          command: |
+            mkdir -p /caches
+            docker save -o /caches/app.tar $IMAGE_NAME
+      - save_cache:
+          paths:
+            - /caches/app.tar
+          key: docker-cache-{{ .Branch }}-{{ checksum "Dockerfile" }}
+workflows:
+  version: 2
+  mr_frontend:
+    jobs:
+      - build
+      - docker:
+          requires:
+            - build

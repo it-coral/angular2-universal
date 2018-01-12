@@ -1,0 +1,62 @@
+<footer id="footer" class="m-t-xl">
+  <div class="bg-info" *ngIf="showSearchRaces">
+    <div class="container">
+      <div class="row wrapper-lg">
+        <div class="col-sm-6 text-white align-middle">
+          <h4>Ready to find a race?</h4>
+        </div>
+        <div class="col-sm-6">
+          <a routerLink="/search" class="btn btn-lg btn-primary btn-rounded pull-right" angulartics2On="click"
+             angularticsEvent="FindRacesLinkClick" angularticsCategory="HomePage">Find races</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white box-shadow">
+    <div class="container">
+      <div class="row wrapper-lg">
+        <div class="col-sm-4 text-center text-sm-left">
+          <h4 class="text-u-c m-b font-thin"><span class="b-b font-bold">Company</span></h4>
+          <ul class="list-unstyled">
+            <li><a routerLink="/about-us" angulartics2On="click" angularticsEvent="FooterAboutUsLinkClick"
+                   angularticsCategory="HomePage">About Us</a></li>
+            <li><a routerLink="/privacy-policy" angulartics2On="click" angularticsEvent="FooterPrivacyPolicyLinkClick"
+                   angularticsCategory="HomePage">Privacy Policy</a></li>
+            <li><a id="footer-tos-link" routerLink="/terms-of-service" angulartics2On="click"
+                   angularticsEvent="FooterTermsLinkClick" angularticsCategory="HomePage">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4 text-center">
+          <h4 class="text-u-c m-b font-thin"><span class="b-b font-bold">Contact Us</span></h4>
+          <p>
+            <a href="mailto:contact@mustrace.com" angulartics2On="click" angularticsEvent="FooterEmailLinkClick"
+               angularticsCategory="HomePage">
+              <i class="fa fa-envelope"></i>
+              contact@mustrace.com
+            </a>
+          </p>
+        </div>
+        <div class="col-sm-4 text-center text-sm-right">
+          <h4 class="text-u-c m-b-xl font-thin"><span class="b-b font-bold">Follow Us</span></h4>
+          <div class="m-b-xl">
+            <a id="link-facebook" href="https://www.facebook.com/mustracecom/?fref=ts"
+               class="btn btn-icon btn-rounded btn-dark" angulartics2On="click"
+               angularticsEvent="FooterFacebookLinkClick" angularticsCategory="HomePage"
+               title="Facebook"><i class="fa fa-facebook"></i></a>
+            <a id="link-twitter" href="https://twitter.com/JoinMustrace" class="btn btn-icon btn-rounded btn-dark"
+               angulartics2On="click" angularticsEvent="FooterTwitterLinkClick" angularticsCategory="HomePage"
+               title="Twitter"><i
+              class="fa fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row padder-v">
+      <div class="col-sm-12 text-center">
+        MustRace © 2016+
+      </div>
+    </div>
+  </div>
+</footer>
